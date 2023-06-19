@@ -1,16 +1,15 @@
 //your code here
-let bandNames = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
+const cleanedNames = bandNames.map(name => name.replace(/^(a |an |the )/i, ''));
 
-// Remove articles from band names
-const articles = ['a', 'an', 'the'];
-bandNames = bandNames.map(name => name.split(' ').filter(word => !articles.includes(word.toLowerCase())).join(' '));
+  // Sort the cleaned names array in lexicographic order
+  const sortedNames = cleanedNames.sort((a, b) => a.localeCompare(b));
 
-// Sort band names in lexicographic order
-bandNames.sort();
-let html = '<ul id="band">';
-bandNames.forEach(name => {
-  html += `<li>${name}</li>`;
-});
-html += '</ul>';
+  // Generate the HTML string with the sorted band names
+  let html = '<ul id="band">';
+  sortedNames.forEach(name => {
+    html += `<li>${name}</li>`;
+  });
+  html += '</ul>';
 
-console.log(html);
+  return html;
+}
